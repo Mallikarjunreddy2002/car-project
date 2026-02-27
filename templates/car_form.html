@@ -1,0 +1,30 @@
+<!-- cars/templates/car_form.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body class="bg-light">
+    {% load crispy_forms_tags %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="col-md-6 bg-white p-4 rounded shadow">
+
+    <h1 class="text-center mb-5">{% if form.instance.pk %}Edit Car{% else %}Add Car{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-success w-25">Save</button><br><br>
+            <a href="{% url 'car_list' %}" class="btn btn-secondary w-50 me-2 align-items-center ">Back to List of Cars</a>
+        </div>
+    </form>
+   
+    </div>
+</div>
+</body>
+</html>
